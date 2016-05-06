@@ -5,12 +5,27 @@ import (
 	"testing"
 )
 
-func TestEncryptDecrypt(t *testing.T) {
-	storage := Storage{
+func genTestStorage(n int) (s Storage) {
+	samples := Storage{
 		&Record{"google.com", "Bob Smith", "qwerty"},
 		&Record{"yandex.ru", "Vladimir Koroviev", "12345678"},
 		&Record{"microsoft.com", "bill_gates", "applesucks000"},
+		&Record{"apple.com", "steve_jobs", "MSeatsCHIT"},
+		&Record{"google.com", "SergeyBrin", "shutup_you_both"},
 	}
+	for n > 0 {
+		if n >= 3 {
+			s = append(s, samples...)
+		} else {
+			s = append(s, samples[:n]...)
+		}
+		n -= 3
+	}
+	return
+}
+
+func TestEncryptDecrypt(t *testing.T) {
+	storage := genTestStorage(10)
 	buffer := &bytes.Buffer{}
 	pwd := "masterPassword"
 
@@ -39,9 +54,7 @@ func TestEncryptDecrypt(t *testing.T) {
 }
 
 func TestEncryptDecrypt_WrongPwd(t *testing.T) {
-	storage := Storage{
-		&Record{"google.com", "Bob Smith", "qwerty"},
-	}
+	storage := genTestStorage(10)
 	buffer := &bytes.Buffer{}
 
 	if err := Encrypt(storage, buffer, "First password"); err != nil {
