@@ -86,3 +86,13 @@ retrieve    Load a password from storage to clipboard
 ## Encryption
 
 You password storage is encrypted using [AES-256](https://en.wikipedia.org/wiki/Advanced_Encryption_Standard) cryptography argorithm with [cipher feedback mode](https://en.wikipedia.org/wiki/Block_cipher_mode_of_operation#Cipher_Feedback_.28CFB.29). Master password is also hashed with [SHA256](https://en.wikipedia.org/wiki/SHA-2) before using as a cipher key.
+
+## Security
+
+You can pass your password storage file whereever you want, but with caution. While it's not practically possible to decrypt it without knowing the *encryption key*, *master password* is usually much shorter and predictable, so it would be enough to bruteforce all the short passwords than 32-byte keys to break your storage.
+
+But with a strong master password it's much safer.
+
+If an attacker has bruteforce rate of one million combinations per second, he would crack the 10-symbol password in 18 thousand years.
+12-symbol - in 74 million years.
+20-symbol - in 10^22 years.
