@@ -36,11 +36,14 @@ func TestUsage(t *testing.T) {
 			`Usage: go <command>
 
 Available commands:
+
 build       Build current package
             Usage: build
+
 run         Run specific source file
             Alises: r, rn
             Usage: run [file.go] <options>
+
 `,
 		},
 	}

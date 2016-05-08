@@ -94,6 +94,7 @@ func Usage(cmd string, subs []*Subcommand) string {
 		head + " <command>",
 		"",
 		"Available commands:",
+		"",
 	}
 	sort.Sort(ByName(subs))
 	for _, sub := range subs {
@@ -108,6 +109,7 @@ func Usage(cmd string, subs []*Subcommand) string {
 			usage += " " + sub.Usage
 		}
 		lines = append(lines, usage)
+		lines = append(lines, "")
 	}
 	return strings.Join(lines, "\n") + "\n"
 }
