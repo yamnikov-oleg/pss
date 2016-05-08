@@ -9,7 +9,7 @@ import (
 func init() {
 	registerSubcommand(&Subcommand{
 		Name:    "retrieve",
-		Aliases: []string{"r", "load", "l", "checkout", "co"},
+		Aliases: []string{"r", "checkout", "co"},
 		Usage:   "<website> [username]",
 		Hint:    "Load a password from storage to clipboard",
 		Handler: cmdRetrieve,
