@@ -1,0 +1,21 @@
+{
+	"ImportPath": "github.com/yamnikov-oleg/pss",
+	"GoVersion": "go1.5",
+	"Packages": [
+		"./..."
+	],
+	"Deps": [
+		{
+			"ImportPath": "github.com/atotto/clipboard",
+			"Rev": "d35a4e46333237c6543ed5ef8804f7e922b30544"
+		},
+		{
+			"ImportPath": "github.com/howeyc/gopass",
+			"Rev": "10b54de414cc9693221d5ff2ae14fd2fbf1b0ac1"
+		},
+		{
+			"ImportPath": "golang.org/x/crypto/ssh/terminal",
+			"Rev": "575fdbe86e5dd89229707ebec0575ce7d088a4a6"
+		}
+	]
+}

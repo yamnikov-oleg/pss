@@ -6,7 +6,7 @@ import (
 	"sort"
 	"strings"
 
-	"github.com/howeyc/gopass"
+	"github.com/yamnikov-oleg/pss/Godeps/_workspace/src/github.com/howeyc/gopass"
 	"github.com/yamnikov-oleg/pss/lib/pss"
 )
 
