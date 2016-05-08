@@ -64,23 +64,40 @@ $ pss
 Usage: pss <command>
 
 Available commands:
+
+dump        Dump storage contents into json file.
+            Usage: dump <path>
+
+gen         Generate random password of given length (default 12).
+            Alises: g
+            Usage: gen [length]
+
 init        Make a new password storage.
             Usage: init
+
 insert      Put a new password record into the storage.
             Alises: ins, i
             Usage: insert <website> <username>
+
 list        Print list of saved records, filtred by optional search query.
             Alises: ls, l
             Usage: list [search query]
+
+load        Load dump from json file into the storage.
+            Usage: load <path>
+
 modify      Modify a record in the storage.
             Alises: mod, m, update, upd, u
             Usage: modify <website> [username]
+
 remove      Remove specific record from storage.
             Alises: rm
             Usage: remove <website> [username]
+
 retrieve    Load a password from storage to clipboard
-            Alises: r, load, l, checkout, co
+            Alises: r, checkout, co
             Usage: retrieve <website> [username]
+
 ```
 
 ## Encryption
