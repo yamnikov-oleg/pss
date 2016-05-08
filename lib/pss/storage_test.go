@@ -2,6 +2,9 @@ package pss
 
 import (
 	"bytes"
+	"encoding/json"
+	"io/ioutil"
+	"os"
 	"testing"
 )
 
@@ -62,5 +65,47 @@ func TestEncryptDecrypt_WrongPwd(t *testing.T) {
 	}
 	if _, err := Decrypt(buffer, "Second password"); err != WrongPwdErr {
 		t.Fatal(err)
+	}
+}
+
+func TestGoldenStorage(t *testing.T) {
+	const password = "golden"
+
+	genc, err := os.Open("golden.enc")
+	if err != nil {
+		t.Fatal(err)
+	}
+	defer genc.Close()
+
+	gjson, err := os.Open("golden.json")
+	if err != nil {
+		t.Fatal(err)
+	}
+	defer gjson.Close()
+
+	var (
+		expected Storage
+		actual   Storage
+	)
+
+	expBuf, err := ioutil.ReadAll(gjson)
+	if err != nil {
+		t.Fatal(err)
+	}
+	if err := json.Unmarshal(expBuf, &expected); err != nil {
+		t.Fatal(err)
+	}
+	actual, err = Decrypt(genc, password)
+	if err != nil {
+		t.Fatal(err)
+	}
+
+	if len(expected) != len(actual) {
+		t.Fatalf("Длины не совпадают. Ожидалось %v, получено %v", len(expected), len(actual))
+	}
+	for i := range expected {
+		if *expected[i] != *actual[i] {
+			t.Errorf("Записи не совпадают. Ожидалось %v, получено %v", expected[i], actual[i])
+		}
 	}
 }
