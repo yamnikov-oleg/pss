@@ -1,4 +1,4 @@
-# pss
+# pss [![Go Report Card](https://goreportcard.com/badge/github.com/yamnikov-oleg/pss)](https://goreportcard.com/report/github.com/yamnikov-oleg/pss) [![Build Status](https://travis-ci.org/yamnikov-oleg/pss.svg?branch=master)](https://travis-ci.org/yamnikov-oleg/pss)
 
 Simple but secure CLI password manager written in Go.
 
