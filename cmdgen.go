@@ -4,6 +4,8 @@ import (
 	"fmt"
 	"math/rand"
 	"time"
+
+	"github.com/yamnikov-oleg/pss/Godeps/_workspace/src/github.com/atotto/clipboard"
 )
 
 func init() {
@@ -37,6 +39,13 @@ func cmdGen(args []string) bool {
 		}
 	}
 
-	fmt.Println(string(buf))
+	if err := clipboard.WriteAll(string(buf)); err != nil {
+		fmt.Println("Error accessing clipboard:")
+		fmt.Println(err)
+		return false
+	}
+
+	fmt.Println("Generated password has been copied to your clipboard.")
+	fmt.Println("Use Ctrl-V or 'Paste' command to use it.")
 	return true
 }
