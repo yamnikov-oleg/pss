@@ -3,6 +3,8 @@ package pss
 import (
 	"os"
 	"path"
+
+	"github.com/yamnikov-oleg/pss/Godeps/_workspace/src/github.com/mitchellh/go-homedir"
 )
 
 const (
@@ -12,9 +14,17 @@ const (
 
 // Пути стандратного расположения хранилища паролей.
 var (
-	StorageDir  = path.Join(os.Getenv("HOME"), dir)
+	StorageDir  = path.Join(mustHomeDir(), dir)
 	StoragePath = path.Join(StorageDir, storageFile)
 )
+
+func mustHomeDir() string {
+	path, err := homedir.Dir()
+	if err != nil {
+		panic(err)
+	}
+	return path
+}
 
 // EncryptDefault записывает хранилище в стандартный файл.
 func EncryptDefault(s Storage, pwd string) error {
