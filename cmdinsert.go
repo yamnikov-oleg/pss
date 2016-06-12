@@ -11,7 +11,7 @@ func init() {
 	registerSubcommand(&Subcommand{
 		Name:    "insert",
 		Aliases: []string{"ins", "i"},
-		Usage:   "<website> <username>",
+		Usage:   "<username> <website>",
 		Hint:    "Put a new password record into the storage.",
 		Handler: cmdInsert,
 	})
@@ -36,7 +36,7 @@ func cmdInsert(args []string) bool {
 		fmt.Println("Please, supply website and username via command line.")
 		return false
 	}
-	website, uname := args[0], args[1]
+	uname, website := args[0], args[1]
 
 	stg, masterpwd, ok := openStorage()
 	if !ok {
