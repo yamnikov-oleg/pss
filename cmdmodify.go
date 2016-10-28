@@ -33,7 +33,7 @@ func cmdModify(args []string) bool {
 
 	fmt.Printf("New value for username (leave blank to keep old value: %v):\n", mod.Username)
 	if _, err := fmt.Scanln(&username); err == nil {
-		mod.Website = username
+		mod.Username = username
 	}
 
 	pwd := promtPwd("New value for password (leave blank to keep old value)", true)
