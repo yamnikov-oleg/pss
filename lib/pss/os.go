@@ -2,9 +2,8 @@ package pss
 
 import (
 	"os"
+	"os/user"
 	"path"
-
-	"github.com/yamnikov-oleg/pss/Godeps/_workspace/src/github.com/mitchellh/go-homedir"
 )
 
 const (
@@ -19,11 +18,11 @@ var (
 )
 
 func mustHomeDir() string {
-	path, err := homedir.Dir()
+	user, err := user.Current()
 	if err != nil {
 		panic(err)
 	}
-	return path
+	return user.HomeDir
 }
 
 // EncryptDefault записывает хранилище в стандартный файл.
