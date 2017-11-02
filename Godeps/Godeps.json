@@ -15,10 +15,6 @@
 			"Rev": "10b54de414cc9693221d5ff2ae14fd2fbf1b0ac1"
 		},
 		{
-			"ImportPath": "github.com/mitchellh/go-homedir",
-			"Rev": "981ab348d865cf048eb7d17e78ac7192632d8415"
-		},
-		{
 			"ImportPath": "golang.org/x/crypto/ssh/terminal",
 			"Rev": "575fdbe86e5dd89229707ebec0575ce7d088a4a6"
 		}
